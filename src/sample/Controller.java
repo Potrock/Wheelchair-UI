@@ -3,17 +3,11 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-import java.io.File;
-import java.io.IOException;
 
 public class Controller {
-    private File dir = new File("C:\\Users\\pwbla\\Desktop\\Scripts");
 
     @FXML
-    private Button squareGame;
-
-    @FXML
-    private Button spaceInvaders;
+    private Button games;
 
     @FXML
     private Button streetview;
@@ -21,23 +15,11 @@ public class Controller {
 
     @FXML
     void onStreetview() {
-        ProcessBuilder pb = new ProcessBuilder("cmd", "/c", "streetview.cmd");
-        pb.directory(dir);
-        try {
-            Process p = pb.start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        new ArduinoChatter("street");
     }
 
     @FXML
-    void onSpaceInvaders() {
-
-    }
-
-    @FXML
-    void on2048() {
-
+    void onGames() {
+        new ArduinoChatter("games");
     }
 }
